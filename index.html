@@ -23,6 +23,7 @@
         <!-- Add your site or application content here -->
         <p>Neighborhood Project.</p>
         <div id="map-canvas"></div>
+        <div id="points" data-bind="template: { name: 'pointsTmpl', foreach: points }"></div>
 
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
