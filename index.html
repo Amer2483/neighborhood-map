@@ -9,8 +9,10 @@
         <title>Neighborhood Project</title>
         <meta name="description" content="Neighborhood Project">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyCXcnyCACWXxy5zKJiOcgz6d7dTVO26Hz0"></script>
     </head>
 
@@ -22,6 +24,12 @@
 
         <!-- Add your site or application content here -->
         <p>Neighborhood Project.</p>
+        <div class="form-group">
+               <div class="input-group">
+                 <div class="input-group-addon">Near</div>
+                <input type="search" class="form-control" id="neighborhood-location" placeholder="Neighborhood">
+               </div>             
+        </div>
         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
         <div id="map-canvas"></div>
         <div id="points" data-bind="template: { foreach: points }"></div>
