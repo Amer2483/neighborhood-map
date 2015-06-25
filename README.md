@@ -1,35 +1,17 @@
-# [Neighborbood Project](http://html5boilerplate.com)
+# [Neighborbood Map Project]
 
-* Use knockout.js framework.
-* Write code required to add a full-screen map to your page using the Google Maps API.
-* Write code required to add map markers identifying a number of locations your are interested in within this neighborhood.
-* Implement the search bar functionality.
-* Implement a list view of the identified locations.
-* Add additional functionality using third-party APIs when a map marker, search result, or list view entry is clicked.
-(ex. Yelp reviews, Wikipedia, StreetView/Flickr images, etc).
+Neighborhood map project is developed for Front-End Nanodegree at Udacity.
+
+* This project is built using Google Maps API, Instagram API and knockoutjs framework.
+Features Include: 
+* A full-screen map to page using the Google Maps API.
+* Map markers identifying a number of locations within Sanjose neighborhood.
+* Search bar functionality.
+* List view of the identified locations.
+* Instagram API is used to show related images of the location.
 
 
-## Features
-
-* HTML5 ready.
-* Cross-browser compatible (Chrome, Opera, Safari, Firefox 3.6+, IE6+).
-* Includes [Normalize.css](http://necolas.github.com/normalize.css/) for CSS
-  normalizations and common bug fixes.
-* The latest [jQuery](http://jquery.com/) via CDN, with a local fallback.
-* The latest [Modernizr](http://modernizr.com/) build for feature detection.
-* IE-specific classes for easier cross-browser control.
-* Placeholder CSS Media Queries.
-* Useful CSS helpers.
-* Default print CSS, performance optimized.
-* Protection against any stray `console.log` causing JavaScript errors in
-  IE6/7.
-* An optimized Google Analytics snippet.
-* Apache server caching, compression, and other configuration defaults for
-  Grade-A performance.
-* Cross-domain Ajax and Flash.
-* "Delete-key friendly." Easy to strip out parts you don't need.
-* Extensive inline and accompanying documentation.
-
+[Demo](http://subratrout.github.io/neighborhood-map)
 
 ## Suggestions and Inputs welcome
 
