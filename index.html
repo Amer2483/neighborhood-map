@@ -22,13 +22,19 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <h2>Neighborhood Project</h2>
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <h2>Neighborhood Map: San Jose</h2>
         <div id="map-canvas"></div>
-        <form data-bind="submit: search">
-            <input data-bind="value: query"></input>
-            <button type="submit">Search</button>
+        <form class="search" data-bind="submit: search">
+            <input class="search-bar" data-bind="value: query"></input>
+            <button class="search-button" type="submit">Search</button>
+            <i class="fa fa-search fa-2x fa-inverse"></i>
         </form>
+
+        <button class="list-toggle" data-bind="click: toggleListDisplay,
+                                           css: {'small-list-toggle': !displayingList() }">
+            <i data-bind="css: {'fa-minus-square': displayingList(),
+                    'fa-plus-square': !displayingList() }" class="fa fa-2x fa-inverse"></i>
+        </button>
 
         <ul class="searchResults" data-bind="foreach: {data: searchResults, as: 'result'}">
             <li class="result" data-bind="click: function() { $root.goToResult(result); $root.displayInfo($root.chosenResult()); $root.twitterSearch() }, css: {chosenResult: $data === $root.chosenResult()}, attr: { id: result.id }">
