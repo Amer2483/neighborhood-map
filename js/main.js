@@ -18,8 +18,19 @@ function appViewModel() {
     });
   }
 
+  // To get the values of Place's open hours property using getDayOfWeek function
 
-  // Create the search box and link it to the UI element.
+  var dateMap = {
+        0: 'Monday',
+        1: 'Tuesday',
+        2: 'Wednesday',
+        3: 'Thursday',
+        4: 'Friday',
+        5: 'Saturday',
+        6: 'Sunday',
+    };
+
+  // Get the map of San Jose area
   function initialize() {
     sanjose = new google.maps.LatLng(37.2970155, -121.8174109)
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -27,47 +38,63 @@ function appViewModel() {
       zoom: 12,
       disableDefaultUI:true
     });
+    getAllPlaces();
   };
 
-  function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                place.marker = createMarker(results[i]);
-                self.searchResults.push(place);
-            }
+  // Call Google Map API for popular restaurants and bars in San Jose area
+    
+    function getAllPlaces() {
+        self.allPlaces([]);
+        var request = {
+            location: sanjose,
+            radius: 500,
+            types: ['cafe', 'bar', 'exotic']
+        };
+        infowindow = new google.maps.InfoWindow();
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, getAllPlacesCallback);
+    }
+
+
+     
+     // Obtain places from getAllPlaces Google request.  Recieve results as an array of PlaceResult Objects
+     //Begins an Instagram request to get recent media for this location.  
+     // The results stored in the place's instagram array created in this function.
+
+    function getAllPlacesCallback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            // Create a new boundary for the map.  Will be updated with each new
+            // location search.
+            bounds = new google.maps.LatLngBounds();
+
+            results.forEach(function (place) {
+                place.marker = createMarker(place);
+               
+                 //Create an array object to store data from Instagram API request.  
+                 // Data are pushed to the allPlaces array
+                 
+                place.instagrams = ko.observableArray([]);
+                
+                // Returns a boolean value if getInstagrams function is still running
+    
+                place.isGettingInstagrams = ko.observable(true);
+               
+                // Returns a boolean value if  place included in the filteredPlaces array
+                 
+                place.isInFilteredList = ko.observable(true);
+                self.allPlaces.push(place);
+                getInstagrams(place);
+                bounds.extend(new google.maps.LatLng(
+                    place.geometry.location.lat(),
+                    place.geometry.location.lng()));
+            });
+            // Show all markers when done looping through the result
+            map.fitBounds(bounds);
         }
-  };
+    }
 
-  function createMarker(place) {
-        var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location,
-        });
-        google.maps.event.addListener(marker, 'click', function () {
-            /*
-            self.searchResults().forEach(function(result) {
-                result.marker.setAnimation(null);
-            })
-            infowindow.setContent("<p>" + place.name + "</p>");
-            infowindow.open(map, this);
-            map.panTo(marker.position);
-            self.chosenResult(place);
-            document.getElementById(place.id).scrollIntoView();
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            */
-            var placeId = '#' + place.id;
-            $(placeId).trigger('click');
+  
 
-        });
-        return marker;
-  };
-  self.splitAddress = function (address) {
-        var firstComma = address.indexOf(',');
-        var street = address.slice(0, firstComma);
-        var cityState = address.slice(firstComma + 1);
-        return [street, cityState];
-  };
 
   self.displayInfo = function (place) {
         console.log(place);
