@@ -206,6 +206,60 @@ a {
   background: #0062ff;
 }
 
+.search-form {
+  margin-left: 340px;
+  top: 10px;
+  left: 50px;
+  float: right;
+}
+
+
+.list-view {
+  display: block;
+  position: fixed;
+  top: 60px;
+  z-index: 1000;
+  float: left;
+  left: 50px;
+  min-width: 200px;
+  overflow: auto;
+  padding: 5px;
+  margin: 2px 10px 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);  
+}
+
+.list-view li {
+  padding: 4px;
+}
+
+li {
+  display: list-item;
+}
+
+li:hover {
+  background-color: #ddd;
+}
+
+li.active {
+  background-color: #ddd;
+}
+
+/* If it is a mobile device, it makes the list-view height smaller */
+@media only screen and (max-width: 500px) {
+  .list-view {
+    max-height: 100px;
+  }
+}
 
 
 
