@@ -45,7 +45,7 @@ var Model = [
       "name": "SmokeEaters Hot Wings",
       "latlng": [37.3362316,-121.8881166]
     }
-]
+];
 
     //google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -86,7 +86,7 @@ var Model = [
 
       self.clickHandler = function(data) {
         centerLocation(data, self.map(), self.markers);
-      }
+      };
     };
 
     // Initialize Google map based on predefined San Jose position
@@ -97,9 +97,8 @@ var Model = [
         zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      return new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      
-    };
+      return new google.maps.Map(document.getElementById('map-canvas'), mapOptions);  
+    }
 
 
     // get location data from foursquare
@@ -107,7 +106,7 @@ var Model = [
       var locationDataArr = [];
       var foursquareUrl = "";
       var location = [];
-      for (place in Model) {
+      for (var place in Model) {
         foursquareUrl = 'https://api.foursquare.com/v2/venues/search' +
           '?client_id=2BIWS0KFSP1W12ARXFHNA20WHNGY0NMOAD3AFYM1ZGCFCF32' +
           '&client_secret=I2F4TTJ0HJOIAO2GCPP0T2NJBMMHFVMCLAQ4HIHF5U1JZCNG' +
@@ -168,6 +167,7 @@ var Model = [
 
 // Add bounce to a marker
 function toggleBounce(marker) {  
+  // Google map documentation shows to keep one "=" instead of two. Does not work with "=="
   if (marker.setAnimation() != null) {
     marker.setAnimation(null);
   } else {
