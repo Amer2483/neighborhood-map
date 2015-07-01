@@ -11,8 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/offline-theme-base.css">
         <link rel="stylesheet" href="css/main.css">     
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyCXcnyCACWXxy5zKJiOcgz6d7dTVO26Hz0"></script>
+        <script type="text/javascript">
+        var run = function(){
+             if (Offline.state === 'up')
+             Offline.check();
+             }
+             setInterval(run, 8000);
+        </script>
     </head>
 
 
@@ -38,11 +46,10 @@
         </div>
         
         
-        
+        <script src = "js/offline-0.7.11.js"></script>
         <script src="js/knockout-3.3.0.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src = "js/offline-0.7.11.js"></script>
         <script src="js/plugins.js"></script>    
         <script src="js/main.js"></script>
     </body>
