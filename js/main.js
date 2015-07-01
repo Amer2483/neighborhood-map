@@ -3,6 +3,51 @@ $(document).ready(function(){
     var self = this;
     var sanjose, map, infoWindow;
 
+    // List of my favorite places in San Francisco
+var Model = [
+    {
+      "name": "Aqui Cal-Mex",
+      "latlng": [37.2872782,-121.9464099]
+    },
+    {
+      "name": "Hannah Coffee & Sweets",
+      "latlng": [37.331574,-121.905534]
+    },
+    {
+      "name": "Yard House",
+      "latlng": [37.323022,-121.947505]
+    },
+    {
+      "name": "Bill's Cafe",
+      "latlng": [37.3283812,-121.9318303]
+    },  
+    {
+      "name": "Bijan Bakery & Cafe",
+      "latlng": [37.3324488,-121.8887316]
+    },
+    {
+      "name": "Crema Coffee Roasting Company",
+      "latlng": [37.3313523,-121.9082112]
+    },
+    {
+      "name": "Panera Bread",
+      "latlng": [37.340226,-121.903743]
+    },
+    {
+      "name": "Cafe Pomegranate",
+      "latlng": [37.33661,-121.88462]
+    },
+    {
+      "name": "Caffe Frascati",
+      "latlng": [37.331145,-121.8870726]
+    },
+    {
+      "name": "SmokeEaters Hot Wings",
+      "latlng": [37.3362316,-121.8881166]
+    }
+]
+
+
     // Initialize Google map based on predefined San Jose position
     function initialize() {
 
